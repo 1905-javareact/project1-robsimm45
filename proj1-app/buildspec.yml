@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 8
+    commands:
+      - cd proj1-app
+      - npm install
+  build:
+    commands:
+      - npm run-script build
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'proj1-app'
