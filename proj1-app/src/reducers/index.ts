@@ -2,8 +2,7 @@ import { combineReducers } from "redux";
 
 export interface ICurrentUserState{
     username: string,
-    password: string,
-    roles: roles[]
+    password: string
 }
 
 
