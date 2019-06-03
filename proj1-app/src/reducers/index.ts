@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { CurrentUserReducer } from "./user.reducer";
 
 export interface ICurrentUserState{
     username: string,
@@ -13,5 +14,5 @@ export interface IState{
 
 //
 export const state = combineReducers<IState>({
-
-}
+ICurrentUserState: CurrentUserReducer
+})
