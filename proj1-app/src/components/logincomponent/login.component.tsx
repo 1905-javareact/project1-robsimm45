@@ -7,21 +7,26 @@ import { IState } from "../../reducers";
 // numbers for dad, ust keeping it here just in case 24 52  77 62  50 61
 
 interface ICurrentUserState{
+    currentUser: User
+    highestRole: string
+    errorMessage: string
+}
+
+interface ICurrentUserProps{
     username: string // not null, unique
     password: string // not null
 }
 
-interface ICurrentUserProps{
-    currentUser: User
-}
 
-
-export class loginComponent extends React.Component<any, any>{
+export class loginComponent extends React.Component<ICurrentUserProps, ICurrentUserState>{
     
 }
 
 const mapStateToProps = (state:IState) =>{
-
+    return{
+        username: 
+        password:
+    }
 }
 
 const mapDispatchToProps = {

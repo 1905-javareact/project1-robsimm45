@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import { CurrentUserReducer } from "./user.reducer";
+import { User } from "../models/users";
 
 export interface ICurrentUserState{
-    username: string,
-    password: string
+    currentUser: User
+    highestRole: string
+    errorMessage: string
 }
 
 
