@@ -22,7 +22,9 @@ export class loginComponent extends React.Component<ICurrentUserProps, ICurrentU
     
     render(){
         return (
-            
+          <div>
+              <h1 className='LoginHeader'>Log In here</h1>
+          </div>  
         ) 
     }
 }
