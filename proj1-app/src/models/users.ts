@@ -13,7 +13,7 @@ export class User {
       this.role.push(roles)
     }
 
-    constructor(userId:number, username:string = '', password:string = '', firstName:string = '', lastName:string = '', email:string = '', roles:Role[] = []){
+    constructor(userId:number = 0, username:string = '', password:string = '', firstName:string = '', lastName:string = '', email:string = '', roles:Role[] = []){
       this.userId = userId
       this.username = username
       this.password = password
