@@ -7,7 +7,7 @@ export class NavComponent extends React.Component{
             <div>
                 <ul className='nav-ul'>
                     <li className = 'nav-li'> 
-                        <Link to='/Login' className='notAnchor'> Log In </Link>
+                        <Link to='/login' className='notAnchor'> Log In </Link>
                     </li>
                 <   li className = 'nav-li'>
                         <Link to='/users' className='notAnchor'> Find User</Link>

@@ -13,6 +13,6 @@ export const loginClient = {
             username: username,
             password: password
         })
-        return result.data.value
+        return result.data
     }
 }

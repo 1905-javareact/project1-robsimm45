@@ -6,4 +6,4 @@ export class ReimbursementType{
         this.typeId = typeId
         this.type = type_name
     }
-  }
+}

@@ -6,4 +6,4 @@ export class ReimbursementStatus{
       this.statusId = statusId
       this.status = status_name
     }
-  }
+}

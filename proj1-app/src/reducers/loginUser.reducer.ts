@@ -24,4 +24,5 @@ export const CurrentUserReducer = (state = initialState, action) => {
             }
     }
 
+    return state
 }

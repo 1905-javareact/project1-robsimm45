@@ -1,6 +1,6 @@
 import { User } from "./users";
-import { ReimbursementStatus } from "./ReimbursementStatus";
-import { ReimbursementType } from "./ReimbursementType";
+import { ReimbursementStatus } from "./reimbursementStatus";
+import { ReimbursementType } from "./reimbursementType";
 
 export class Reimbursement{
     reimbursementId: number // primary key
