@@ -18,8 +18,12 @@ export const CurrentUserReducer = (state = initialState, action) => {
             return{
                 ...state,
                 currentUser: action.payload.foundUser,
-                ///didn't think highest role through maybe a function is needed
-                //errorMesage: action.
+                errorMessage: action.payload.errorMessage
+            }
+        case loginTypes.Not_Found:
+            return{
+                ...state,
+                errorMessage: 'User Not Found'
             }
     }
 
