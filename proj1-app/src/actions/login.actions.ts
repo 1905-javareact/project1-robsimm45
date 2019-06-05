@@ -6,14 +6,18 @@ export const loginTypes ={
 }
 
 export const submitUser = (username:string, password:string) => async (dispatch) => {
+    try{
+        let found:User = await loginClient.fullLogin(username, password)
     
-    let found:User = await loginClient.fullLogin(username, password)
-    
-    dispatch({
-        payload:{
-            foundUser: found,
-            errorMessage: ''
-        },
-        type: loginTypes.New_User
-    })
+        dispatch({
+            payload:{
+                foundUser: found,
+                errorMessage: ''
+            },
+            type: loginTypes.New_User
+        })
+
+    }catch(err){
+        console.log(err)
+    }
 }

@@ -1,12 +1,11 @@
 import {ICurrentUserState} from '.'
-import { User } from '../models/users';
 import { loginTypes } from '../actions/login.actions';
 
 
 
 // creates the initial state using the interface of userstate from the index 
 const initialState: ICurrentUserState = {
-    currentUser: new User(),
+    currentUser: undefined,
     highestRole: '',
     errorMessage: ''
 }

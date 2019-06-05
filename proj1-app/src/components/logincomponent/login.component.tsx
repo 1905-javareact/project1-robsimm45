@@ -20,7 +20,7 @@ interface ICurrentUserProps extends RouteComponentProps{
 }
 
 
-export class loginComponent extends React.Component<ICurrentUserProps, ICurrentUserState>{
+class loginComponent extends React.Component<ICurrentUserProps, ICurrentUserState>{
     constructor(props){
         super(props);
         this.state = {
