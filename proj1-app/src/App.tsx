@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import  loginComponent  from './components/logincomponent/login.component';
+import  userComponent from './components/usercomponent/user.component';
 
 const App: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ const App: React.FC = () => {
         <NavComponent/>
           <Switch>
             <Route path='/login' component={loginComponent}/>
-          {/* <Route path='/users' component={UserComponent}/>  for testing*/}
+          <Route path='/users' component={userComponent}/> 
           </Switch>
       </div>
       </BrowserRouter>

@@ -25,7 +25,7 @@ export interface ISearchedReimbursementState{
 //all the states we are following
 export interface IState{
     CurrentUser: ICurrentUserState
-    //UserFinder: ISearchedUsersState
+    UserFinder: ISearchedUsersState
     //ReimbursementFinder: ISearchedReimbursementState
 
 
@@ -33,7 +33,7 @@ export interface IState{
 
 //
 export const state = combineReducers<IState>({
-    CurrentUser: CurrentUserReducer//,
-    //UserFinder: UserSearcherReducer,
+    CurrentUser: CurrentUserReducer,
+    UserFinder: UserSearcherReducer,
     //ReimbursementFinder: ReimbursementSearcherReducer,
 })
