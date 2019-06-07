@@ -58,4 +58,14 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  margin: auto;
+}
+
+nav{
+  display: block;
+  margin-bottom: 50px;
+}
+
+table{
+  border: #282c34
 }

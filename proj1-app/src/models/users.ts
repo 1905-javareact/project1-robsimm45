@@ -13,14 +13,6 @@ export class User {
       this.role.push(roles)
     }
 
-    printRoles(){
-      let result = ''
-      for(let x of this.role){
-        result += x.roleName + ', '
-      }
-      return result
-    }
-
     constructor(userId:number = 0, username:string = '', password:string = '', firstName:string = '', lastName:string = '', email:string = '', roles:Role[] = []){
       this.userId = userId
       this.username = username

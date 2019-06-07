@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { NavComponent } from './components/nav/nav.component';
+import  NavComponent  from './components/nav/nav.component';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { store } from './store';
 import { Provider } from 'react-redux';
@@ -16,7 +16,7 @@ const App: React.FC = () => {
         <NavComponent/>
           <Switch>
             <Route path='/login' component={loginComponent}/>
-          <Route path='/users' component={userComponent}/> 
+            <Route path='/users' component={userComponent}/> 
           </Switch>
       </div>
       </BrowserRouter>

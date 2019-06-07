@@ -3,13 +3,8 @@ import { connect } from "react-redux";
 import { User } from "../../models/users";
 import { IState } from "../../reducers";
 import { RouteComponentProps } from "react-router";
-import { userNavComponent } from "../nav/user-nav.component";
-import { BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { obtainAllUsers, obtainUser } from "../../actions/user.actions";
-import { CurrentUserReducer } from "../../reducers/loginUser.reducer";
-//import { obtainAllUsers, obtainUser } from "../../actions/user.actions";
-
-// numbers for dad, ust keeping it here just in case 24 52  77 62  50 61
 
 interface ICurrentUsersState{
     
@@ -42,16 +37,19 @@ class userComponent extends React.Component<ICurrentUserProps, ICurrentUsersStat
 
     }
 
-
-    componentWillMount(){
-
-    }
+    printRoles(){
+        let result = ''
+        for(let x of this.props.currentUser.role){
+          result += x.roleName + ', '
+        }
+        console.log(result)
+        return result
+      }
 
     render(){
-        return (
-            <BrowserRouter>
+        if(this.userCanSee()){
+            return (
                 <div>
-                    {/* So gotta figure out for extra components*/}
                     <table>
                         <tr>
                             <th>User ID</th>
@@ -70,7 +68,7 @@ class userComponent extends React.Component<ICurrentUserProps, ICurrentUsersStat
                                 <td>{this.props.currentUser.username}</td>
                                 <td>{this.props.currentUser.password}</td>
                                 <td>{this.props.currentUser.email}</td>
-                                <td>{this.props.currentUser.printRoles()}</td>
+                                <td>{this.printRoles()}</td>
 
                             </tr>
                         </tbody>
@@ -78,10 +76,14 @@ class userComponent extends React.Component<ICurrentUserProps, ICurrentUsersStat
                     {this.userCanSee() ? <button> <Link to='/seeAllUsers'> See All Users </Link> </button>: null}
                     {this.userCanSee() ? <button> <Link to='/findUser'>Find User Using Id</Link> </button>: null}
                     {this.userCanSee() ? <button> <Link to='/updateUser'>Update a Certain User</Link></button>: null}
-                </div>
-            </BrowserRouter>
-        ) 
-    }
+                </div>            
+            ) 
+        } else {
+            this.props.history.goBack()
+            return ''
+        }
+    }   
+        
 }
 
 const mapStateToProps = (state:IState) =>{
