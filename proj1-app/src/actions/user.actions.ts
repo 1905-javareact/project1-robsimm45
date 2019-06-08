@@ -2,23 +2,21 @@ import { userClient } from "../axios/user-api.client";
 import { User } from "../models/users";
 
 export const userTypes ={
-    Found_User: 'NEW_USER_LOGGED_IN',
+    Found_User: 'FOUND_USER',
     Found_All: 'FOUND_ALL_USERS',
     Not_Found: 'USER_NOT_FOUND'
 }
 
 export const obtainAllUsers = () => async (dispatch) => {
     try{
-        let found:User = await userClient.allUsers()
+        let found:User[] = await userClient.allUsers()
 
-        console.log(found)
-
-        if(found.firstName !== undefined){
+        if(found[0].firstName !== undefined){
             
             dispatch({
                 payload:{
-                    foundUser: found,
-                    errorMessage: 'Logged In'
+                    foundUsers: found,
+                    errorMessage: 'found them all'
                 },
                 type: userTypes.Found_All
             })
@@ -46,7 +44,7 @@ export const obtainUser = (id) => async (dispatch) => {
             dispatch({
                 payload:{
                     foundUser: found,
-                    errorMessage: 'Logged In'
+                    errorMessage: ''
                 },
                 type: userTypes.Found_User
             })

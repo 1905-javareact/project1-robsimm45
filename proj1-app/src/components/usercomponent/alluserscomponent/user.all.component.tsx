@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { User } from "../../models/users";
-import { IState } from "../../reducers";
+import { User } from "../../../models/users";
+import { IState } from "../../../reducers/index";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
-import { obtainAllUsers, obtainUser } from "../../actions/user.actions";
+import { obtainUser } from "../../../actions/user.actions";
+import { Role } from "../../../models/role";
 
 interface ICurrentUsersState{
     
@@ -12,12 +13,12 @@ interface ICurrentUsersState{
 
 interface ICurrentUserProps extends RouteComponentProps{
     currentUser: User
-    obtainAllUsers: () => void
-    obtainUser: (userId) => void
+    foundUsers: User[]
+
 }
 
 
-class userComponent extends React.Component<ICurrentUserProps, ICurrentUsersState>{
+class userAllComponent extends React.Component<ICurrentUserProps, ICurrentUsersState>{
     constructor(props){
         super(props);
         this.state = {
@@ -25,9 +26,6 @@ class userComponent extends React.Component<ICurrentUserProps, ICurrentUsersStat
         }
     }
 
-    componentWillMount(){
-        this.props.obtainAllUsers()
-    }
 
     userCanSee(){
         for(let rol of this.props.currentUser.role){
@@ -41,14 +39,30 @@ class userComponent extends React.Component<ICurrentUserProps, ICurrentUsersStat
 
     }
 
-    printRoles(){
+    printRoles(role:Role[]){
         let result = ''
-        for(let x of this.props.currentUser.role){
+        for(let x of role){
           result += x.roleName + ', '
         }
         console.log(result)
         return result
-      }
+    }
+
+
+    printUsers = this.props.foundUsers.map((users, index)=>{
+            return(
+                <tr key={`${users.userId}`}>
+                    <td>{users.userId}</td>
+                    <td>{users.firstName}</td>
+                    <td>{users.lastName}</td>
+                    <td>{users.username}</td>
+                    <td>{users.password}</td>
+                    <td>{users.email}</td>
+                    <td>{this.printRoles(users.role)}</td>
+                </tr>
+            )
+        })
+      
 
     render(){
         if(this.userCanSee()){
@@ -67,21 +81,9 @@ class userComponent extends React.Component<ICurrentUserProps, ICurrentUsersStat
                         </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>{this.props.currentUser.userId}</td>
-                                <td>{this.props.currentUser.firstName}</td>
-                                <td>{this.props.currentUser.lastName}</td>
-                                <td>{this.props.currentUser.username}</td>
-                                <td>{this.props.currentUser.password}</td>
-                                <td>{this.props.currentUser.email}</td>
-                                <td>{this.printRoles()}</td>
-
-                            </tr>
+                            {this.printUsers}
                         </tbody>
                     </table>
-                    {this.userCanSee() ? <button> <Link to='/seeAllUsers'> See All Users </Link> </button>: null}
-                    {this.userCanSee() ? <button> <Link to='/findUser'>Find User Using Id</Link> </button>: null}
-                    {this.userCanSee() ? <button> <Link to='/updateUser'>Update a Certain User</Link></button>: null}
                 </div>            
             ) 
         } else {
@@ -94,14 +96,13 @@ class userComponent extends React.Component<ICurrentUserProps, ICurrentUsersStat
 
 const mapStateToProps = (state:IState) =>{
     return{
-        currentUser: state.CurrentUser.currentUser
+        currentUser: state.CurrentUser.currentUser,
+        foundUsers: state.UserFinder.foundUsers
     }
 
 }
 
 const mapActionToProps = {
-    obtainAllUsers,
-    obtainUser
 }
 
-export default connect(mapStateToProps,mapActionToProps)(userComponent)
+export default connect(mapStateToProps,mapActionToProps)(userAllComponent)

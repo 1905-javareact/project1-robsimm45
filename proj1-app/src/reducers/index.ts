@@ -13,6 +13,7 @@ export interface ICurrentUserState{
 
 export interface ISearchedUsersState{
     foundUsers: User[]
+    foundUser: User
     errorMessage: string
 }
 

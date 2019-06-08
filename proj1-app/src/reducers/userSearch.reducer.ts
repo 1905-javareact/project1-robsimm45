@@ -1,8 +1,10 @@
 import { ISearchedUsersState, state } from ".";
 import { userTypes } from "../actions/user.actions";
+import { User } from "../models/users";
 
 const initialState:ISearchedUsersState = {
     foundUsers: [],
+    foundUser: new User,
     errorMessage: ''
 }
 
@@ -13,12 +15,12 @@ export const UserSearcherReducer = (state = initialState, action) => {
         case userTypes.Found_All:
             return{
                 ...state,
-                foundUsers: action.payload.foundUser
+                foundUsers: action.payload.foundUsers
             }
         case userTypes.Found_User:
             return{
                 ...state,
-                foundUsers: action.payload.foundUser
+                foundUser: action.payload.foundUser
             }
         case userTypes.Not_Found:
             return{

@@ -4,7 +4,8 @@ const loginApiClient = Axios.create({
     baseURL: 'http://localhost:9050/users',
     headers: {
         'content-type': 'application/json'
-    }
+    },
+    withCredentials: true
 })
 
 export const loginClient = {

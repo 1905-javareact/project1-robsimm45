@@ -6,6 +6,8 @@ import { store } from './store';
 import { Provider } from 'react-redux';
 import  loginComponent  from './components/logincomponent/login.component';
 import  userComponent from './components/usercomponent/user.component';
+import userAllComponent from './components/usercomponent/alluserscomponent/user.all.component';
+import userIdComponent from './components/usercomponent/userbyidcomponent/user.id.component';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +19,8 @@ const App: React.FC = () => {
           <Switch>
             <Route path='/login' component={loginComponent}/>
             <Route path='/users' component={userComponent}/> 
+            <Route path='/seeAllUsers' component={userAllComponent}/>
+            <Route path='/findUser' component={userIdComponent}/>
           </Switch>
       </div>
       </BrowserRouter>
