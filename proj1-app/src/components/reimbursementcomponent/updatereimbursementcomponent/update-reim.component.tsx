@@ -148,12 +148,12 @@ class reimbursementUpdateComponent extends React.Component<IReimbursementProps, 
                         <form onSubmit={this.updateReim}>
                         <img className="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"/>
                         <h1>Update Reimbursement</h1>
-                        <input type='number' onChange={this.changeAmount}/>
-                        <input type='text' onChange={this.changeDateSub}/>
-                        <input type='text' onChange={this.changeDateRes}/>
-                        <input type='number' onChange={this.changeDescription}/>
-                        <input type='number' onChange={this.changeResolver}/>
-                        <input type='number' onChange={this.changeAuthor}/>
+                        <input type='number' value={this.state.toBeUpdated.amount} onChange={this.changeAmount}/>
+                        <input type='text' value={this.state.toBeUpdated.dateSubmitted} onChange={this.changeDateSub}/>
+                        <input type='text' value={this.state.toBeUpdated.dateResolved} onChange={this.changeDateRes}/>
+                        <input type='text' value={this.state.toBeUpdated.description} onChange={this.changeDescription}/>
+                        <input type='text' value={this.state.toBeUpdated.resolver} onChange={this.changeResolver}/>
+                        <input type='text' value={this.state.toBeUpdated.author}onChange={this.changeAuthor}/>
                         <select value={this.state.toBeUpdated.type} onChange={this.changeType}>
                             <option value='Lodging'>Lodging</option>
                             <option value='Travel'>Travel</option>

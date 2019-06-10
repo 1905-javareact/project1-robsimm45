@@ -1,5 +1,4 @@
 import Axios from 'axios'
-import updateReimComponent from '../components/reimbursementcomponent/updatereimbursementcomponent/update-reim.component';
 
 const reimApiClient = Axios.create({
     baseURL: 'http://localhost:9050/reimbursement',
@@ -28,7 +27,7 @@ export const reimClient = {
     },
 
     async submitReim(reim){
-        let result = await reimApiClient.post('/', JSON.stringify(reim))
+        let result = await reimApiClient.post('/', reim)
         return result.data
     }    
 }

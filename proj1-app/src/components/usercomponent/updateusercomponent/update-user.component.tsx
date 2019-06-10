@@ -118,11 +118,11 @@ class updateUserComponent extends React.Component<ICurrentUserProps, ICurrentUse
                     <form onSubmit={this.updateUser}>
                         <img className="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"/>
                         <h1>Update Reimbursement</h1>
-                        <input type='text' onChange={this.changeUsername}/>
-                        <input type='text' onChange={this.changePassword}/>
-                        <input type='text' onChange={this.changeFirstName}/>
-                        <input type='text' onChange={this.changeLastName}/>
-                        <input type='text' onChange={this.changeEmail}/>
+                        <input type='text' value={this.state.userModified.username} onChange={this.changeUsername}/>
+                        <input type='text' value={this.state.userModified.password} onChange={this.changePassword}/>
+                        <input type='text' value={this.state.userModified.firstName} onChange={this.changeFirstName}/>
+                        <input type='text' value={this.state.userModified.lastName} onChange={this.changeLastName}/>
+                        <input type='text' value={this.state.userModified.email} onChange={this.changeEmail}/>
                         </form>
                     </div>
                 </div>            
