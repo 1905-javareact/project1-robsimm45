@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import updateUserComponent from '../components/usercomponent/updateusercomponent/update-user.component';
 
 const userApiClient = Axios.create({
     baseURL: 'http://localhost:9050/users',
@@ -17,6 +18,11 @@ export const userClient = {
 
     async getUser(id:number){
         let result = await userApiClient.get(`/${id}`)
+        return result.data
+    },
+
+    async updateUser(user){
+        let result = await userApiClient.patch('/', JSON.stringify(user))
         return result.data
     }
 }

@@ -4,6 +4,7 @@ import { User } from "../models/users";
 export const userTypes ={
     Found_User: 'FOUND_USER',
     Found_All: 'FOUND_ALL_USERS',
+    User_Updated: 'UPDATED',
     Not_Found: 'USER_NOT_FOUND'
 }
 
@@ -47,6 +48,30 @@ export const obtainUser = (id) => async (dispatch) => {
                     errorMessage: ''
                 },
                 type: userTypes.Found_User
+            })
+    
+        } else {
+            dispatch({
+                type: userTypes.Not_Found
+            })
+    
+        }
+
+    }catch(err){
+        console.log(err)
+    }
+}
+
+export const sendUser = (user) => async (dispatch) => {
+    try{
+        let found:User = await userClient.updateUser(user)
+
+        console.log(found)
+
+        if(found !== undefined){
+            
+            dispatch({
+                type: userTypes.User_Updated
             })
     
         } else {
