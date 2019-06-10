@@ -5,9 +5,10 @@ import { IState } from "../../reducers";
 import { RouteComponentProps } from "react-router";
 import { Reimbursement } from "../../models/reimbursement";
 import { obtainByAuthor } from "../../actions/reimbursement.action";
+import { JSXElement } from "@babel/types";
 
 interface IAuthorState{
-    authorId : number
+    authorId : number;
 }
 
 interface ICurrentUserProps extends RouteComponentProps{
@@ -17,17 +18,18 @@ interface ICurrentUserProps extends RouteComponentProps{
 }
 
 
-class authorComponent extends React.Component<ICurrentUserProps, IAuthorState>{
+class AuthorComponent extends React.Component<ICurrentUserProps, IAuthorState>{
     constructor(props){
         super(props);
         this.state = {
-            authorId: 0,
+            authorId: 0
         }
     }
 
     submitAuthorId = (event)=>{
         event.preventDefault()
         this.props.obtainByAuthor(this.state.authorId) 
+        
     }
 
 
@@ -49,11 +51,13 @@ class authorComponent extends React.Component<ICurrentUserProps, IAuthorState>{
 
     }
 
+    
 
 
     render(){
-
-        let printReims = this.props.foundReimbursements && this.props.foundReimbursements.map((foundReimbursements)=>{
+        let newSet;
+        
+         newSet =  this.props.foundReimbursements.map((foundReimbursements)=>{
             return(
                 <tr key={`${foundReimbursements.reimbursementId}`}>
                     <td>{foundReimbursements.reimbursementId}</td>
@@ -68,7 +72,6 @@ class authorComponent extends React.Component<ICurrentUserProps, IAuthorState>{
                 </tr>
             )
         })
-
 
         if(this.userCanSee()){
             return (
@@ -97,7 +100,7 @@ class authorComponent extends React.Component<ICurrentUserProps, IAuthorState>{
                         </tr>
                         </thead>
                         <tbody>
-                            {printReims}
+                            {newSet}
                         </tbody>
                     </table>
                     </div>
@@ -114,7 +117,7 @@ class authorComponent extends React.Component<ICurrentUserProps, IAuthorState>{
 const mapStateToProps = (state:IState) =>{
     return{
         currentUser: state.CurrentUser.currentUser,
-        foundReimbursement: state.ReimbursementFinder.foundReimbursements
+        foundReimbursements: state.ReimbursementFinder.foundReimbursements
     }
 
 }
@@ -123,4 +126,4 @@ const mapActionToProps = {
     obtainByAuthor
 }
 
-export default connect(mapStateToProps,mapActionToProps)(authorComponent)
+export default connect(mapStateToProps,mapActionToProps)(AuthorComponent)

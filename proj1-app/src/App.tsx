@@ -11,7 +11,7 @@ import userIdComponent from './components/usercomponent/userbyidcomponent/user.i
 import reimbursementComponent from './components/reimbursementcomponent/reimbursement.component';
 import reimbursementUpdateComponent from './components/reimbursementcomponent/updatereimbursementcomponent/update-reim.component';
 import reimbursementSubmitComponent from './components/reimbursementcomponent/submitreimbursementcomponent/submit-reim.component';
-import authorComponent from './components/reimbursementcomponent/reimbursement.author.component'
+import AuthorComponent from './components/reimbursementcomponent/reimbursement.author.component'
 import updateUserComponent from './components/usercomponent/updateusercomponent/update-user.component';
 
 const App: React.FC = () => {
@@ -28,7 +28,7 @@ const App: React.FC = () => {
             <Route path='/findUser' component={userIdComponent}/>
             <Route path='/updateUser' component={updateUserComponent}/>
             <Route path='/Reimbursements' component={reimbursementComponent}/>
-            <Route path='/seeAuthors' component={authorComponent}/>
+            <Route path='/seeAuthors' component={AuthorComponent}/>
             <Route path='/updateReim' component={reimbursementUpdateComponent}/>
             <Route path='/submitReim' component={reimbursementSubmitComponent}/>
           </Switch>
