@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { User } from "../../../models/users";
 import { IState } from "../../../reducers";
 import { RouteComponentProps } from "react-router";
-import { Link } from "react-router-dom";
 import { obtainUser } from "../../../actions/user.actions";
 
 interface ICurrentUsersState{

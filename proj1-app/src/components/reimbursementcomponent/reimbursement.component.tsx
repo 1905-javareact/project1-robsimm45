@@ -6,7 +6,6 @@ import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import { Reimbursement } from "../../models/reimbursement";
 import { findReimbursementsByStatus } from "../../actions/reimbursement.action";
-import { jsxAttribute } from "@babel/types";
 
 interface ICurrentUsersState{
     statusType: number

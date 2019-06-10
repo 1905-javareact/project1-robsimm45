@@ -3,10 +3,8 @@ import { connect } from "react-redux";
 import { User } from "../../../models/users";
 import { IState } from "../../../reducers";
 import { RouteComponentProps } from "react-router";
-import { Link } from "react-router-dom";
 import { Reimbursement } from "../../../models/reimbursement";
 import { updateReimbursement } from "../../../actions/reimbursement.action";
-import { jsxAttribute } from "@babel/types";
 
 
 interface IUpdatedReimState{

@@ -1,4 +1,4 @@
-import { ISearchedUsersState, state } from ".";
+import { ISearchedUsersState } from ".";
 import { userTypes } from "../actions/user.actions";
 import { User } from "../models/users";
 

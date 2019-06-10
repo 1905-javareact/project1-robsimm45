@@ -29,7 +29,7 @@ class reimbursementSubmitComponent extends React.Component<IReimbursementProps, 
     changeAmount = (event) =>{
         event.preventDefault()
         let tempReim = this.state.toBeUpdated
-        tempReim.amount = event.target.value
+        tempReim.amount = parseInt(event.target.value)
         this.setState({
             toBeUpdated: tempReim
         })
@@ -128,7 +128,7 @@ class reimbursementSubmitComponent extends React.Component<IReimbursementProps, 
                         <form onSubmit={this.addReim}>
                         <img className="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"/>
                         <h1>Make a New Reimbursement (Must have all fields filled)</h1>
-                        <input type='number' placeholder='Amount' onChange={this.changeAmount}/>
+                        <input type='text' placeholder='Amount' onChange={this.changeAmount}/>
                         <input type='text' placeholder='YYYY-MM-DD  Date Submitted' onChange={this.changeDateSub}/>
                         <input type='text' placeholder='YYYY-MM-DD  Date Resolved' onChange={this.changeDateRes}/>
                         <input type='text' placeholder='Description' onChange={this.changeDescription}/>

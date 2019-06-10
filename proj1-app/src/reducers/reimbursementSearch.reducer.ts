@@ -1,7 +1,5 @@
 import { ISearchedReimbursementState } from ".";
 import { ReimTypes } from "../actions/reimbursement.action";
-import { Reimbursement } from "../models/reimbursement";
-
 
 const initialState:ISearchedReimbursementState = {
     foundReimbursements: [],

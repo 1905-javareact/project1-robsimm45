@@ -1,5 +1,4 @@
 import Axios from 'axios'
-import updateUserComponent from '../components/usercomponent/updateusercomponent/update-user.component';
 
 const userApiClient = Axios.create({
     baseURL: 'http://localhost:9050/users',
