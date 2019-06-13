@@ -7,6 +7,7 @@ import { sendUser } from "../../../actions/user.actions";
 
 interface ICurrentUsersState{
     userModified: User
+    inputVal: number
 }
 
 interface ICurrentUserProps extends RouteComponentProps{
@@ -17,12 +18,28 @@ interface ICurrentUserProps extends RouteComponentProps{
 
 
 class updateUserComponent extends React.Component<ICurrentUserProps, ICurrentUsersState>{
+    constructor(props){
+        super(props)
+        this.state = {
+            userModified: new User,
+            inputVal: 0
+        }
+    }
 
+    changeSelect=(event)=>{
+        event.preventDefault()
+        this.setState({
+            inputVal: parseInt(event.target.value)
+        })
+    }
 
     selectUser=(event)=>{
         event.preventDefault()
+        const tempUser = this.props.allUsers.find((t)=>{return t.userId === this.state.inputVal})
+        console.log(typeof(this.state.inputVal))
+        console.log(tempUser)
         this.setState({
-            userModified: this.props.allUsers[event.target.value]
+            userModified: tempUser
         })
     }
 
@@ -108,7 +125,7 @@ class updateUserComponent extends React.Component<ICurrentUserProps, ICurrentUse
                     <form className="form-signin text-center" onSubmit={this.selectUser}>
                     <img className="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"/>
                     <h1 className="h3 mb-3 font-weight-normal">Enter Id of The User You Wanted To Update </h1>
-                    <input type="number" id="inputSearchId" className="form-control" onChange={this.selectUser} required autoFocus/>
+                    <input type="text" id="inputSearchId" className="form-control" onChange={this.changeSelect} required autoFocus/>
                     <button className="btn btn-lg btn-primary btn-block" type="submit">Search</button>
                     </form>
 
@@ -122,6 +139,7 @@ class updateUserComponent extends React.Component<ICurrentUserProps, ICurrentUse
                         <input type='text' value={this.state.userModified.firstName} onChange={this.changeFirstName}/>
                         <input type='text' value={this.state.userModified.lastName} onChange={this.changeLastName}/>
                         <input type='text' value={this.state.userModified.email} onChange={this.changeEmail}/>
+                        <button className="btn btn-lg btn-primary btn-block" type="submit">Update</button>
                         </form>
                     </div>
                 </div>            

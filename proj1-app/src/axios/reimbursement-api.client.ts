@@ -22,7 +22,7 @@ export const reimClient = {
     },
 
     async updateReim(reim){
-        let result = await reimApiClient.patch('/', JSON.stringify(reim))
+        let result = await reimApiClient.patch('/', reim)
         return result.data
     },
 

@@ -30,7 +30,7 @@ class reimbursementUpdateComponent extends React.Component<IReimbursementProps, 
         event.preventDefault()
         console.log(event.target.value)
 
-        let tempArray = this.props.foundReimbursements.find((reim)=>{return reim.reimbursementId === event.target.value})
+        let tempArray = this.props.foundReimbursements.find((reim)=>{return reim.reimbursementId === parseInt(event.target.value)})
         if(tempArray !== undefined){
             this.setState({
                 toBeUpdated: tempArray
@@ -42,7 +42,7 @@ class reimbursementUpdateComponent extends React.Component<IReimbursementProps, 
     changeAmount = (event) =>{
         event.preventDefault()
         let tempReim = this.state.toBeUpdated
-        tempReim.amount = event.target.value
+        tempReim.amount = parseInt(event.target.value)
         this.setState({
             toBeUpdated: tempReim
         })
@@ -114,6 +114,7 @@ class reimbursementUpdateComponent extends React.Component<IReimbursementProps, 
 
     
     updateReim = (event) =>{
+        event.preventDefault()
         this.props.updateReimbursement(this.state.toBeUpdated)
     }
 
@@ -132,21 +133,21 @@ class reimbursementUpdateComponent extends React.Component<IReimbursementProps, 
 
 
     render(){
-        console.log(this.props.foundReimbursements)
+        console.log(this.state.toBeUpdated)
         if(this.userCanSee()){
             return (
                 <div>
                     <form className="form-signin text-center">
                     <img className="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"/>
                     <h1 className="h3 mb-3 font-weight-normal">Enter Id of The Reimbursement You Wanted To Update </h1>
-                    <input type="number" id="inputSearchId" className="form-control" onChange={this.selectReim} required autoFocus/>
+                    <input type="text" id="inputSearchId" className="form-control" onChange={this.selectReim} required autoFocus/>
                     </form>
 
                     <div>
                         <form onSubmit={this.updateReim}>
                         <img className="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"/>
                         <h1>Update Reimbursement</h1>
-                        <input type='number' value={this.state.toBeUpdated.amount} onChange={this.changeAmount}/>
+                        <input type='text' value={this.state.toBeUpdated.amount} onChange={this.changeAmount}/>
                         <input type='text' value={this.state.toBeUpdated.dateSubmitted} onChange={this.changeDateSub}/>
                         <input type='text' value={this.state.toBeUpdated.dateResolved} onChange={this.changeDateRes}/>
                         <input type='text' value={this.state.toBeUpdated.description} onChange={this.changeDescription}/>
@@ -163,6 +164,7 @@ class reimbursementUpdateComponent extends React.Component<IReimbursementProps, 
                             <option value='Approved'>Approved</option>
                             <option value='Denied'>Denied</option>
                         </select>
+                        <button className="btn btn-lg btn-primary btn-block" type="submit">Update</button>
                         </form>
                     </div>
                 </div>            

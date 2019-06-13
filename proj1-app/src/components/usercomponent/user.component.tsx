@@ -35,10 +35,23 @@ class userComponent extends React.Component<ICurrentUserProps, ICurrentUsersStat
                 return true
             } else if(rol.roleName === 'admin'){
                 return true
+            }else if(rol.roleName === 'employee'){
+                return true
             }
             return false
         }
 
+    }
+
+    userAuthorized(){
+        for(let rol of this.props.currentUser.role){
+            if(rol.roleName === 'finance-manager'){
+                return true
+            } else if(rol.roleName === 'admin'){
+                return true
+            }
+            return false
+        }
     }
 
     printRoles(){
@@ -79,9 +92,9 @@ class userComponent extends React.Component<ICurrentUserProps, ICurrentUsersStat
                             </tr>
                         </tbody>
                     </table>
-                    {this.userCanSee() ? <button> <Link to='/seeAllUsers'> See All Users </Link> </button>: null}
-                    {this.userCanSee() ? <button> <Link to='/findUser'>Find User Using Id</Link> </button>: null}
-                    {this.userCanSee() ? <button> <Link to='/updateUser'>Update a Certain User</Link></button>: null}
+                    {this.userAuthorized() ? <button> <Link to='/seeAllUsers'> See All Users </Link> </button>: null}
+                    {this.userAuthorized() ? <button> <Link to='/findUser'>Find User Using Id</Link> </button>: null}
+                    {this.userAuthorized() ? <button> <Link to='/updateUser'>Update a Certain User</Link></button>: null}
                 </div>            
             ) 
         } else {

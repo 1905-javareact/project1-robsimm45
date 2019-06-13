@@ -62,7 +62,9 @@ export const findReimbursementsByStatus = (status) => async (dispatch) => {
 
 export const updateReimbursement = (toUpdate) => async (dispatch) => {
     try{
-        let found:Reimbursement[] = await reimClient.reimByStatus(toUpdate)
+        toUpdate.amount = parseInt(toUpdate.amount)
+
+        let found:Reimbursement[] = await reimClient.updateReim(toUpdate)
 
         if(found !== undefined){
             

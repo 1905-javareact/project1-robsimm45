@@ -21,7 +21,7 @@ export const userClient = {
     },
 
     async updateUser(user){
-        let result = await userApiClient.patch('/', JSON.stringify(user))
+        let result = await userApiClient.patch('', JSON.stringify(user))
         return result.data
     }
 }
